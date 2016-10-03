@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Restaurant Reservation</title>
+  <meta name="viewport" content="width=device-width, user-scalable=no">
+  <link href="https://fonts.googleapis.com/css?family=Lato:400,100,700,900" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/lib/angular/angular.min.js"></script>
+  <script src="js/app.js"></script>
+</head>
+<body>
+<div class="page">
+  <section class="card register" ng-app="myApp" ng-controller="RegistrationController">
+  <form name="myform"
+  ng-submit="register()"
+  novalidate>
+
+    <div class="textintro">
+      <h1>Reservations</h1>
+      <p>Please make reservations at least 15 days in advance</p>
+     
+    </div>
+
+    <fieldset>
+      <input type="text" name="firstname" 
+        placeholder="First Name"
+        ng-model="guest.firstname"
+        ng-required="true">
+         <p class="error validationerror" ng-show="myform.firstname.$invalid && myform.firstname.$touched">Enter First Name</p>
+
+      <input type="text" name="lastname"
+        placeholder="Last Name"
+        ng-model="guest.lastname"
+        ng-required="true">
+        <p class="error validationerror" ng-show="myform.lastname.$invalid && myform.lastname.$touched">Enter Last Name</p>
+      
+      <input type="email" name="email"
+        placeholder="Email"
+        ng-model="guest.email">
+        <p class="error validationerror" ng-show="myform.email.$invalid && myform.email.$touched">Please Enter Valid Email Address</p>
+
+      <input type="date" name="date"
+        ng-model="guest.date"
+        ng-minlength="8">
+        <p class="error validationerror" ng-show="myform.date.$invalid && myform.date.$touched">Please Enter Valid date</p>
+
+      <input type="time" name="time"
+        ng-model="guest.time">
+
+      <input type="number" name="numberGuests"
+        placeholder="Number of Guests in Party"
+        ng-model="guest.number"
+        ng-minlength="1"
+        ng-maxlength="80">
+        <p class="error validationerror" ng-show="myform.number.$invalid && myform.number.$touched">Please Enter Valid date</p>
+    </fieldset>
+
+    <button type="submit" class="btn">Submit</button>
+    <br>
+    <p eng-show="message">{{message}}</p>
+  </form>
+</section>
+</div>
+</body>
+</html>
